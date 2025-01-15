@@ -22,7 +22,7 @@ const Navbar = () => {
           <button className="hover:text-gray-300">Today's Deals</button>
           <button className="hover:text-gray-300">Customer Service</button>
           <button className="hover:text-gray-300">Browsing History</button>
-          <button className="hover:text-gray-300">Home Improvement</button>
+          {/* <button className="hover:text-gray-300">Home Improvement</button> */}
         </div>
       </div>
     </nav>

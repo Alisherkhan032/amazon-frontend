@@ -7,7 +7,7 @@ import Select from "../Select/Select";
 
 const Header = () => {
   return (
-    <div className="bg-primary-dark text-white flex items-center justify-between gap-x-4 px-4">
+    <div className="bg-primary-dark text-white flex items-center justify-between gap-x-4 px-4 sticky top-0 z-10">
       {/* left side */}
       <div className="flex items-center py-3">
         <div>
