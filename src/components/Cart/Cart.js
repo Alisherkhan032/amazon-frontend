@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import products from "../../assets/products";
 import { YellowButton } from "../Button/Button";
 import { useDispatch, useSelector } from "react-redux";
@@ -6,10 +6,13 @@ import { updateQuantity, toggleSelect } from "../../slices/cartSlice";
 import { EMI_OPTIONS } from "../../constants/Options";
 
 const Cart = () => {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth",
-  });
+  // Move scroll behavior to useEffect
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, []); // Empty dependency array means this runs only once when component mounts
   
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
@@ -74,7 +77,7 @@ const Cart = () => {
                     {item.quantity === 1 ? (
                       <i className="fi fi-rs-trash "></i>
                     ) : (
-                      <i class="fi fi-rr-minus-small"></i>
+                      <i className="fi fi-rr-minus-small"></i>
                     )}
                   </button>
                   <div className="pb-1">{item.quantity}</div>
@@ -82,7 +85,7 @@ const Cart = () => {
                     className="font-bold"
                     onClick={() => handleQuantityChange(item.id, 1)}
                   >
-                    <i class="fi fi-rr-plus-small"></i>
+                    <i className="fi fi-rr-plus-small"></i>
                   </button>
                 </div>
                 <button className="text-blue-500 text-sm ml-4">Delete</button>
