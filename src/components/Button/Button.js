@@ -21,7 +21,7 @@ const AddToCartButton = ({ onClick }) => {
       bgColor="bg-yellow-dark"
       fontSize="text-xs"
       onClick={onClick}
-      className="text-black w-full rounded-3xl px-4 py-1 font-semibold"
+      className="text-black w-full rounded-3xl px-4 py-2 font-semibold"
     />
   );
 };
@@ -36,5 +36,16 @@ const YellowButton = ({ onClick, title, ...props }) => {
     />
   );
 };
+const WhiteButton = ({ onClick, title, ...props }) => {
+  return (
+    <Button
+      title={title}
+      bgColor="bg-gray-200"
+      fontSize="text-xs"
+      onClick={onClick}
+      className="text-black w-full border rounded-3xl px-4 py-2 font-semibold"
+    />
+  );
+};
 
-export { Button, AddToCartButton , YellowButton};
+export { Button, AddToCartButton , YellowButton, WhiteButton};

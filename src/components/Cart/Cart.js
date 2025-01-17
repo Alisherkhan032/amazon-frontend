@@ -6,6 +6,11 @@ import { updateQuantity, toggleSelect } from "../../slices/cartSlice";
 import { EMI_OPTIONS } from "../../constants/Options";
 
 const Cart = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+  
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
@@ -13,9 +18,9 @@ const Cart = () => {
     dispatch(updateQuantity({ id, increment }));
   };
 
-  const handleToggleSelect = (id)=>{
-    dispatch(toggleSelect({id}));
-  }
+  const handleToggleSelect = (id) => {
+    dispatch(toggleSelect({ id }));
+  };
 
   return (
     <div className="flex flex-col lg:flex-row gap-x-8 p-8 bg-gray-100">
@@ -66,7 +71,11 @@ const Cart = () => {
                     className="font-bold"
                     onClick={() => handleQuantityChange(item.id, -1)}
                   >
-                    {item.quantity === 1 ? <i className="fi fi-rs-trash "></i> : <i class="fi fi-rr-minus-small"></i>}
+                    {item.quantity === 1 ? (
+                      <i className="fi fi-rs-trash "></i>
+                    ) : (
+                      <i class="fi fi-rr-minus-small"></i>
+                    )}
                   </button>
                   <div className="pb-1">{item.quantity}</div>
                   <button

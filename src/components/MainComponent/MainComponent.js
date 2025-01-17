@@ -4,7 +4,7 @@ import ProductList from '../ProductList/ProductList'
 
 const MainComponent = () => {
   return (
-    <div className=''>
+    <div className='bg-black'>
       <Carousel />
       <ProductList />
     </div>

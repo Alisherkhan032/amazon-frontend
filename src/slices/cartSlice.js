@@ -27,10 +27,20 @@ const cartSlice = createSlice({
             if(!product) return;
 
             product.selected = !product.selected;
+        },
+        addToCart : (state, action) => {
+            const {product} = action.payload;
+            console.log('product', product);
+            const existingProduct = state.items.find((item) => item.id === product.id);
+
+            if(existingProduct) return;
+
+            const newProduct = {...product, quantity : 1, selected : true};
+            state.items.push(newProduct);
         }
     }
 })
 
-export const {  updateQuantity, toggleSelect } = cartSlice.actions
+export const {  updateQuantity, toggleSelect, addToCart } = cartSlice.actions
 
 export default cartSlice.reducer;
