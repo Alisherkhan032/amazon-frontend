@@ -2,18 +2,22 @@ import React, { useState, useEffect } from "react";
 import products from "../../assets/products";
 import { YellowButton } from "../Button/Button";
 import { useDispatch, useSelector } from "react-redux";
-import { updateQuantity, toggleSelect } from "../../slices/cartSlice";
+import {
+  updateQuantity,
+  toggleSelect,
+} from "../../slices/cartSlice";
 import { EMI_OPTIONS } from "../../constants/Options";
+import CartActionButtons from "../CartActionButton/CartActionButton";
 
 const Cart = () => {
-  // Move scroll behavior to useEffect
+  
   useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: "smooth",
     });
-  }, []); // Empty dependency array means this runs only once when component mounts
-  
+  }, []);
+
   const cartItems = useSelector((state) => state.cart.items);
   const dispatch = useDispatch();
 
@@ -24,6 +28,7 @@ const Cart = () => {
   const handleToggleSelect = (id) => {
     dispatch(toggleSelect({ id }));
   };
+
 
   return (
     <div className="flex flex-col lg:flex-row gap-x-8 p-8 bg-gray-100">
@@ -88,10 +93,9 @@ const Cart = () => {
                     <i className="fi fi-rr-plus-small"></i>
                   </button>
                 </div>
-                <button className="text-blue-500 text-sm ml-4">Delete</button>
-                <button className="text-blue-500 text-sm ml-4">
-                  Save for later
-                </button>
+                <div className="ml-4"> 
+                  <CartActionButtons item={item} />
+                </div>
               </div>
             </div>
 
