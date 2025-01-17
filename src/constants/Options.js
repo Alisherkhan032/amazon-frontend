@@ -16,4 +16,12 @@ export const COUNTRY_OPTIONS = [
     { value: "US", label: "US" },
     { value: "UK", label: "UK" },
 ]
+
+export const EMI_OPTIONS = [
+    { value: "EMI Available", label: "EMI Available" },
+    { value: "3 months EMI", label: "3 months EMI" },
+    { value: "6 months EMI", label: "6 months EMI" },
+    { value: "9 months EMI", label: "9 months EMI" },
+    { value: "12 months EMI", label: "12 months EMI" },
+]
   

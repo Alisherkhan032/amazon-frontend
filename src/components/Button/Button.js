@@ -25,5 +25,16 @@ const AddToCartButton = ({ onClick }) => {
     />
   );
 };
+const YellowButton = ({ onClick, title, ...props }) => {
+  return (
+    <Button
+      title={title}
+      bgColor="bg-yellow-dark"
+      fontSize="text-sm"
+      onClick={onClick}
+      className="text-black  rounded-3xl px-4 py-2 font-medium"
+    />
+  );
+};
 
-export { Button, AddToCartButton };
+export { Button, AddToCartButton , YellowButton};

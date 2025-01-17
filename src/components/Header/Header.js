@@ -3,7 +3,7 @@ import AmazonIcon from "../../assets/amazon_logo.png";
 import { USER_NAME, USER_ADDRESS } from "../../constants/headerConstants";
 import India from "../../assets/india.png";
 import { CATEGORY_OPTIONS, COUNTRY_OPTIONS } from "../../constants/Options";
-import Select from "../Select/Select";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -11,13 +11,15 @@ const Header = () => {
       {/* left side */}
       <div className="flex items-center py-3">
         <div>
-          <img src={AmazonIcon} alt="Amazon" className="h-10 mr-4" />
+          <Link to="/">
+            <img src={AmazonIcon} alt="Amazon" className="h-10 mr-4" />
+          </Link>
         </div>
 
         <div className="flex pb-2">
           {/* Icon */}
           <div className="pt-4 ">
-            <i class="fi fi-rs-marker text-base"></i>
+            <i className="fi fi-rs-marker text-base"></i>
           </div>
 
           {/* Text */}
@@ -66,7 +68,6 @@ const Header = () => {
 
       {/* right side */}
       <div className="flex items-center gap-x-4">
-
         <div className="flex gap-x-1">
           <img className="h-6" src={India} alt="" />
           <select name="" id="" className="bg-transparent appearance-none">
@@ -77,7 +78,7 @@ const Header = () => {
             ))}
           </select>
         </div>
-        
+
         <div className="flex ">
           <div className="flex flex-col leading-3 ml-1">
             <span className="text-white text-sm font-medium">
@@ -93,13 +94,13 @@ const Header = () => {
         </div>
 
         <div className="flex items-baseline leading-3 gap-x-1">
-          <span className="text-white text-4xl font-medium">
-          <i class="fi fi-bs-shopping-cart"></i>
-          </span>
-          <span className="text-white font-semibold">Cart</span>
+          <Link to="/cart">
+            <span className="text-white text-4xl font-medium">
+              <i class="fi fi-bs-shopping-cart"></i>
+            </span>
+            <span className="text-white font-semibold">Cart</span>
+          </Link>
         </div>
-
-
       </div>
     </div>
   );
