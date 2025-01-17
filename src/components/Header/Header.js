@@ -4,8 +4,10 @@ import { USER_NAME, USER_ADDRESS } from "../../constants/headerConstants";
 import India from "../../assets/india.png";
 import { CATEGORY_OPTIONS, COUNTRY_OPTIONS } from "../../constants/Options";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Header = () => {
+  const totalItemsInCart = useSelector(state => state.cart.items.length)
   return (
     <div className="bg-primary-dark text-white flex items-center justify-between gap-x-4 px-4 sticky top-0 z-20">
       {/* left side */}
@@ -93,12 +95,19 @@ const Header = () => {
           <span className="text-white font-semibold">& Orders</span>
         </div>
 
-        <div className="flex items-baseline leading-3 gap-x-1">
-          <Link to="/cart">
+        <div className="flex items-center gap-x-2">
+          <Link to="/cart" className="flex items-center">
             <span className="text-white text-4xl font-medium">
-              <i class="fi fi-bs-shopping-cart"></i>
+              <i className="fi fi-bs-shopping-cart"></i>
             </span>
-            <span className="text-white font-semibold">Cart</span>
+            <div className=" flex flex-col justify-center -space-y-1">
+              <span className="text-[#ff9442] font-semibold text-2xl ml-2">
+                {totalItemsInCart}
+              </span>{" "}
+              {/* Number on top */}
+              <span className="text-white text- font-semibold">Cart</span>{" "}
+              {/* Text "Cart" at the bottom */}
+            </div>
           </Link>
         </div>
       </div>
