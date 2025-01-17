@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const totalItemsInCart = useSelector(state => state.cart.items.length)
+  const totalItemsInCart = useSelector((state) => state.cart.items.length);
   return (
     <div className="bg-primary-dark text-white flex items-center justify-between gap-x-4 px-4 sticky top-0 z-20">
       {/* left side */}
@@ -96,14 +96,15 @@ const Header = () => {
         </div>
 
         <div className="flex items-center gap-x-2">
-          <Link to="/cart" className="flex items-center">
-            <span className="text-white text-4xl font-medium">
-              <i className="fi fi-bs-shopping-cart"></i>
-            </span>
-            <div className=" flex flex-col justify-center -space-y-1">
+          <Link to="/cart" className="flex items-center gap-x-2">
+            <div className="text-white text-4xl font-medium flex justify-center -space-x-5 -space-y-1">
+              <i class="fi fi-rs-dolly-flatbed-empty"></i>
               <span className="text-[#ff9442] font-semibold text-2xl ml-2">
                 {totalItemsInCart}
               </span>{" "}
+            </div>
+            <div className=" flex flex-col justify-center -space-y-1">
+              
               {/* Number on top */}
               <span className="text-white text- font-semibold">Cart</span>{" "}
               {/* Text "Cart" at the bottom */}
