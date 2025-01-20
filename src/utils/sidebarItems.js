@@ -1,8 +1,8 @@
 export const sidebarItems = [
     {
       type: 'heading',
-      text: 'Hello Ali',
-      bgColor: 'bg-gray-900',
+      text: 'Hello, Ali',
+      bgColor: 'bg-primary-dark',
       textColor: 'text-white',
     },
     {

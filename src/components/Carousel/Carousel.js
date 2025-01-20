@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import images from "../../assets/crouselImages";
+import ProductList from "../ProductList/ProductList";
 
 const CustomCarousel = () => {
   const [slides, setSlides] = useState([]);
@@ -8,8 +9,10 @@ const CustomCarousel = () => {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
 
+  // Add an interval duration (in milliseconds)
+  const SLIDE_INTERVAL = 3000; // 3 seconds
+
   useEffect(() => {
-    // Create the infinite array by adding copies at the start and end
     const lastSlide = Object.values(images)[Object.values(images).length - 1];
     const firstSlide = Object.values(images)[0];
     const slidesWithClones = [lastSlide, ...Object.values(images), firstSlide];
@@ -19,11 +22,20 @@ const CustomCarousel = () => {
   useEffect(() => {
     if (isTransitioning) {
       const timeout = setTimeout(() => {
-        setIsTransitioning(false);
+        setIsTransitioning(true);
       }, 500); // Match this with your transition duration
       return () => clearTimeout(timeout);
     }
   }, [isTransitioning]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleNext();
+    }, SLIDE_INTERVAL);
+
+    // Clear the interval on unmount to prevent memory leaks
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
   const handleSlideChange = (newIndex) => {
     setIsTransitioning(true);
@@ -61,7 +73,7 @@ const CustomCarousel = () => {
 
   const handleTouchEnd = () => {
     if (!touchStart || !touchEnd) return;
-    
+
     const distance = touchStart - touchEnd;
     const minSwipeDistance = 50;
 
@@ -80,7 +92,8 @@ const CustomCarousel = () => {
   if (slides.length === 0) return null;
 
   return (
-    <div className="relative overflow-hidden ">
+    <div className="relative overflow-hidden w-full h-full">
+      {/* Main Slider Container */}
       <div
         className="flex"
         style={{
@@ -92,7 +105,7 @@ const CustomCarousel = () => {
         onTouchEnd={handleTouchEnd}
       >
         {slides.map((src, index) => (
-          <div key={index} className="w-screen h-screen flex-shrink-0">
+          <div key={index} className="w-screen h-full flex-shrink-0">
             <img
               src={src}
               alt={`Slide ${index}`}
@@ -103,7 +116,7 @@ const CustomCarousel = () => {
       </div>
 
       {/* Navigation Dots */}
-      <div className="absolute mt-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+      <div className="flex justify-center gap-2 mt-8">
         {Object.values(images).map((_, index) => (
           <button
             key={index}
@@ -115,19 +128,21 @@ const CustomCarousel = () => {
         ))}
       </div>
 
-      {/* Navigation Arrows */}
-      <button
-        onClick={handlePrev}
-        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-opacity-50 text-black p-2 "
-      >
-        <i className="fi fi-rs-angle-left text-4xl bg-transparent"></i>
-      </button>
-      <button
-        onClick={handleNext}
-        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-opacity-50 text-black p-2 "
-      >
-        <i className="fi fi-rs-angle-right text-4xl bg-transparent"></i>
-      </button>
+      {/* Navigation Arrows - Now using flex to position them */}
+      <div className="absolute inset-0 flex items-center justify-between pointer-events-none">
+        <button
+          onClick={handlePrev}
+          className="pointer-events-auto ml-4 bg-opacity-50 text-black p-2"
+        >
+          <i className="fi fi-rs-angle-left text-4xl bg-transparent"></i>
+        </button>
+        <button
+          onClick={handleNext}
+          className="pointer-events-auto mr-4 bg-opacity-50 text-black p-2"
+        >
+          <i className="fi fi-rs-angle-right text-4xl bg-transparent"></i>
+        </button>
+      </div>
     </div>
   );
 };

@@ -1,75 +1,60 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
+import React from 'react';
 import Drawer from '@mui/material/Drawer';
-import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import List from '@mui/material/List';
-import Divider from '@mui/material/Divider';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
-import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
 import { sidebarItems } from '../../utils/sidebarItems';
 
-export default function LeftSidebar() {
-    const [open, setOpen] = React.useState(false);
-  
-    const toggleDrawer = (newOpen) => () => {
-      setOpen(newOpen);
-    };
-  
-    // Function to handle click on sidebar items
-    const handleOptionClick = (option) => {
-      alert(`You clicked on ${option}`);
-    };
-  
-    // Dynamically render the list of sidebar items
-    const renderSidebarItems = sidebarItems.map((item, index) => {
-      if (item.type === 'heading') {
-        return (
-          <ListItem key={index} disablePadding>
-            <ListItemButton style={{ backgroundColor: item.bgColor }}>
-              <ListItemText
-                primary={item.text}
-                style={{ color: item.textColor, fontWeight: 'bold', fontSize: '1.2rem' }}
-              />
-            </ListItemButton>
-          </ListItem>
-        );
-      }
-  
-      if (item.type === 'categoryHeading') {
-        return (
-          <ListItem key={index} disablePadding>
-            <ListItemButton style={{ backgroundColor: '#f0f0f0', paddingLeft: '16px' }}>
-              <ListItemText
-                primary={item.title}
-                style={{ fontWeight: 'bold', color: '#333' }}
-              />
-            </ListItemButton>
-          </ListItem>
-        );
-      }
-  
+const LeftSidebar = ({ isOpen, onClose }) => {
+  const renderSidebarItems = sidebarItems.map((item, index) => {
+    if (item.type === 'heading') {
       return (
-        <ListItem key={index} disablePadding>
-          <ListItemButton onClick={() => handleOptionClick(item.title)}>
-            <ListItemText primary={item.title} />
-          </ListItemButton>
-        </ListItem>
+        <li key={index} className={`py-3 px-4 ${item.bgColor}`}>
+          <span className={`text-lg font-bold ${item.textColor}`}>
+            {item.text}
+          </span>
+        </li>
       );
-    });
+    }
   
     return (
-      <div>
-        <Button onClick={toggleDrawer(true)}>Open drawer</Button>
-        <Drawer open={open} onClose={toggleDrawer(false)}>
-          <Box sx={{ width: 250 }} role="presentation">
-            <List>{renderSidebarItems}</List>
-            <Divider />
-          </Box>
-        </Drawer>
-      </div>
+      <li key={index} className="py-2 px-4 hover:bg-gray-100 transition-colors">
+        <button className="w-full text-left">
+          {item.title}
+        </button>
+      </li>
     );
-  }
+  });
+  
+
+  return (
+    <Drawer 
+      open={isOpen} 
+      onClose={onClose}
+      anchor="left"
+      PaperProps={{
+        sx: {
+          backgroundColor: '#fff', // Sidebar background
+          color: '#000',
+          padding : 0,
+          margin : 0
+        },
+      }}
+      BackdropProps={{
+        sx: {
+          backgroundColor: 'rgba(0, 0, 0, 0.8)', // Darker background
+        },
+      }}
+    >
+      <Box sx={{ width: 350 }} disablePadding >
+        <List disablePadding >
+          {renderSidebarItems}
+        </List>
+      </Box>
+    </Drawer>
+  );
+};
+
+export default LeftSidebar;
