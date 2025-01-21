@@ -8,6 +8,7 @@ import {
 } from "../../slices/cartSlice";
 import { EMI_OPTIONS } from "../../constants/Options";
 import CartActionButtons from "../CartActionButton/CartActionButton";
+import Navlayout from '../Navlayout/Navlayout'
 
 const Cart = () => {
   
@@ -142,4 +143,8 @@ const Cart = () => {
   );
 };
 
-export default Cart;
+export default function(){
+  return <Navlayout>
+    <Cart />
+  </Navlayout>
+}

@@ -8,6 +8,8 @@ import { useSelector } from "react-redux";
 
 const Header = () => {
   const totalItemsInCart = useSelector((state) => state.cart.items.length);
+  const name = useSelector((state) => state.auth.currentUser?.username);
+  // console.log('name', user.name);
   return (
     <div className="bg-primary-dark text-white flex items-center justify-between gap-x-4 px-4 sticky top-0 z-20">
       {/* left side */}
@@ -25,9 +27,9 @@ const Header = () => {
           </div>
 
           {/* Text */}
-          <div className="flex flex-col leading-3 ml-1">
+          <div className="flex flex-col leading-5 ml-1">
             <span className="text-gray-300 text-sm font-normal">
-              Deliver to {USER_NAME}
+              Deliver to {name}
             </span>
             <span className="text-white font-semibold">{USER_ADDRESS}</span>
           </div>
@@ -84,9 +86,11 @@ const Header = () => {
         <div className="flex ">
           <div className="flex flex-col leading-3 ml-1">
             <span className="text-white text-sm font-medium">
-              Hello, {USER_NAME}
+              Hello, {name}
             </span>
-            <span className="text-white font-semibold">Account & Lists</span>
+            <Link to="/profile">
+              <span className="text-white font-semibold">Account & Lists</span>
+            </Link>
           </div>
         </div>
 
@@ -104,7 +108,6 @@ const Header = () => {
               </span>{" "}
             </div>
             <div className=" flex flex-col justify-center -space-y-1">
-              
               {/* Number on top */}
               <span className="text-white text- font-semibold">Cart</span>{" "}
               {/* Text "Cart" at the bottom */}
