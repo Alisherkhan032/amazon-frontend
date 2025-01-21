@@ -6,6 +6,7 @@ import MainComponent from "./components/MainComponent/MainComponent";
 import Cart from "./components/Cart/Cart";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
+import AuthPages from "./pages/AuthPages";
 import { useSelector } from "react-redux";
 import {setCartItems } from "./slices/cartSlice"
 import axios from "axios";
@@ -33,7 +34,7 @@ function App() {
 
   useEffect(() => {
     if(user && user.token){
-      fetchCartData();
+      // fetchCartData();
     }
   }, [user]);
   return (
@@ -42,7 +43,7 @@ function App() {
         <Routes>
           <Route path="/" element={<MainComponent />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={<AuthPages />} />
           <Route path='/profile' element = {<Profile />} />
         </Routes>
       </div>
