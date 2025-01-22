@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import products from "../assets/products";
 
 const initialState = {
-    items : products.slice(0, 4).map((product) => ({...product, quantity : 1, selected : true}))
+    items : []
 }
 
 const cartSlice = createSlice({
@@ -41,10 +41,14 @@ const cartSlice = createSlice({
         removeFromCart : (state, action)=>{
             const {id} = action.payload;
             state.items = state.items.filter((item) => item.id !== id);
+        },
+        resetCart : (state)=>{
+            state.items = [];
         }
+        
     }
 })
 
-export const {  updateQuantity, toggleSelect, addToCart, removeFromCart } = cartSlice.actions
+export const {  updateQuantity, toggleSelect, addToCart, removeFromCart, resetCart } = cartSlice.actions
 
 export default cartSlice.reducer;

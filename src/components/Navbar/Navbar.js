@@ -44,8 +44,8 @@ const Navbar = () => {
 
       {/* Sidebar */}
       <Sidebar 
-        isOpen={isSidebarOpen} 
-        onClose={handleCloseSidebar}
+        open={isSidebarOpen} 
+        toggleDrawer={handleCloseSidebar}
       />
     </>
   );
