@@ -61,7 +61,7 @@ const AuthPages = () => {
           const errMessage =
             err?.response?.data?.message || "Something went wrong";
           setError(errMessage);
-        });
+        }).finally(() => setLoading(false));
     } else {
       if (formData.password !== formData.confirmPassword) {
         setError("Passwords do not match");
@@ -89,7 +89,7 @@ const AuthPages = () => {
           const errMessage =
             err?.response?.data?.message || "Something went wrong!";
           setError(errMessage);
-        });
+        }).finally(() => setLoading(false));
 
       setLoading(false);
     }
