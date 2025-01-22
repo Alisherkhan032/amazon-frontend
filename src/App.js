@@ -4,47 +4,47 @@ import Header from "./components/Header/Header";
 import Navbar from "./components/Navbar/Navbar";
 import MainComponent from "./components/MainComponent/MainComponent";
 import Cart from "./components/Cart/Cart";
-import Login from "./components/Login/Login";
+import Login, { Auth } from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
-import AuthPages from "./pages/AuthPages";
-import { useSelector } from "react-redux";
-import {setCartItems } from "./slices/cartSlice"
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
-
+import { setCurrentUser, setLoading } from "./slices/authSlice";
 
 function App() {
-  const user = useSelector(state => state.auth.currentUser);
-  
-  const fetchCartData = async () => {
-    try {
-      const response = await axios.get('http://localhost:3030/cart', {
-        headers: {
-          Authorization: `Bearer ${user.token}`
-        }
-      });
-      const cartData = response.data; 
-      console.log(cartData); 
-      
-    } catch (error) {
-      console.error("Error fetching cart data:", error.message);
-      return null; 
-    }
-  };
-  
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.currentUser);
 
   useEffect(() => {
-    if(user && user.token){
-      // fetchCartData();
-    }
-  }, [user]);
+    const fetchUser = async (refreshToken) => {
+      try {
+        dispatch(setLoading(true));
+        const response = await axios.get("http://localhost:5001/user", {
+          headers: {
+            Authorization: `Bearer ${refreshToken}`,
+          },
+        });
+        console.log("response data:", response.data);
+        dispatch(setCurrentUser(response.data));
+      } catch (error) {
+        console.error("Error fetching cart data:", error.message);
+      } finally{
+        dispatch(setLoading(false));
+      }
+    };
+    const refreshToken = localStorage.getItem("refreshToken");
+    fetchUser(refreshToken);
+  }, []);
   return (
     <Router>
       <div>
         <Routes>
           <Route path="/" element={<MainComponent />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/login" element={<AuthPages />} />
-          <Route path='/profile' element = {<Profile />} />
+
+          <Route element={<Auth />}>
+            <Route path="/cart" element={<Cart />} />
+            <Route path="/profile" element={<Profile />} />
+          </Route>
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </Router>

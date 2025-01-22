@@ -5,10 +5,12 @@ import India from "../../assets/india.png";
 import { CATEGORY_OPTIONS, COUNTRY_OPTIONS } from "../../constants/Options";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import AccountDropdown from "../AccountDropdown/AccountDropdown";
+import { capitalize } from "lodash";
 
 const Header = () => {
   const totalItemsInCart = useSelector((state) => state.cart.items.length);
-  const name = useSelector((state) => state.auth.currentUser?.username);
+  const name = useSelector((state) => state.auth.currentUser?.user?.username) || 'Guest';
   // console.log('name', user.name);
   return (
     <div className="bg-primary-dark text-white flex items-center justify-between gap-x-4 px-4 sticky top-0 z-20">
@@ -29,7 +31,7 @@ const Header = () => {
           {/* Text */}
           <div className="flex flex-col leading-5 ml-1">
             <span className="text-gray-300 text-sm font-normal">
-              Deliver to {name}
+              Deliver to {capitalize(name)}
             </span>
             <span className="text-white font-semibold">{USER_ADDRESS}</span>
           </div>
@@ -83,7 +85,7 @@ const Header = () => {
           </select>
         </div>
 
-        <div className="flex ">
+        {/* <div className="flex ">
           <div className="flex flex-col leading-3 ml-1">
             <span className="text-white text-sm font-medium">
               Hello, {name}
@@ -91,8 +93,11 @@ const Header = () => {
             <Link to="/profile">
               <span className="text-white font-semibold">Account & Lists</span>
             </Link>
+            
           </div>
-        </div>
+        </div> */}
+        <AccountDropdown />
+        
 
         <div className="flex flex-col leading-3 ml-1">
           <span className="text-white text-sm font-medium">Returns</span>

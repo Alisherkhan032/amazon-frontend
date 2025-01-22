@@ -1,10 +1,20 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, Outlet, useLocation } from "react-router-dom";
 import AmazonIcon from "../../assets/amazon_logo.png";
-import { useDispatch } from "react-redux";
-import { setCurrentUser } from "../../slices/authSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { setCurrentUser, setLoading } from "../../slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+
+export function Auth(){
+  const user = useSelector((state) => state.auth.currentUser);
+  const location = useLocation();
+  const loading = useSelector((state) => state.auth.loading);
+  if(loading){
+    return <div>Loading...</div>
+  }
+  return user ? <Outlet /> : <Navigate to="/login" state={{ from: location }} replace />;
+}
 
 const AuthPages = () => {
   const [isLoginView, setIsLoginView] = useState(true);
@@ -39,10 +49,10 @@ const AuthPages = () => {
         })
         .then((response) => {
           const { token, refresh_token : refreshToken } = response?.data;
-          dispatch(setCurrentUser({ username: formData.username }));
+          dispatch(setCurrentUser({user : {username : formData.username}}));
           localStorage.setItem("token", token);
           localStorage.setItem("refreshToken", refreshToken);
-          navigate("/profile");
+          navigate("/");
         })
         .catch((err) => {
           const errMessage =

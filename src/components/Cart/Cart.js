@@ -30,6 +30,12 @@ const Cart = () => {
     dispatch(toggleSelect({ id }));
   };
 
+  const calculateTotalAmount = () => {
+    return cartItems
+      .filter((item) => item.selected)
+      .reduce((acc, item) => acc + item.newPrice * item.quantity, 0);
+  }
+
 
   return (
     <div className="flex flex-col lg:flex-row gap-x-8 p-8 bg-gray-100">
@@ -111,7 +117,10 @@ const Cart = () => {
       <div className="flex flex-col w-full lg:w-1/3 border border-gray-300 bg-white p-6 shadow-md h-fit">
         <div className="mb-4">
           <p className="text-lg">
-            Subtotal ({cartItems.filter((item) => item.selected).length} items):{" "}
+            Subtotal ({cartItems.filter((item) => item.selected).length} items): 
+            <span className="ml-3 font-medium">
+            ₹{ calculateTotalAmount() }
+            </span>
             {/* <span className="font-semibold">₹{subtotal}</span> */}
             <div className="flex  items-center my-2">
               <input className="w-4 h-4" type="checkbox" name="" id="" />

@@ -1,59 +1,72 @@
-import React from 'react';
-import Drawer from '@mui/material/Drawer';
-import Box from '@mui/material/Box';
-import List from '@mui/material/List';
-import ListItem from '@mui/material/ListItem';
-import ListItemButton from '@mui/material/ListItemButton';
-import ListItemText from '@mui/material/ListItemText';
-import { sidebarItems } from '../../utils/sidebarItems';
+import React from "react";
+import { Drawer } from "@mui/material";
+import { sidebarItems } from "../../utils/sidebarItems";
+import { useSelector } from "react-redux";
+import { capitalize } from "lodash";
+// import { X } from "lucide-react";
 
-const LeftSidebar = ({ isOpen, onClose }) => {
-  const renderSidebarItems = sidebarItems.map((item, index) => {
-    if (item.type === 'heading') {
-      return (
-        <li key={index} className={`py-3 px-4 ${item.bgColor}`}>
-          <span className={`text-lg font-bold ${item.textColor}`}>
-            {item.text}
-          </span>
-        </li>
-      );
-    }
-  
-    return (
-      <li key={index} className="py-2 px-4 hover:bg-gray-100 transition-colors">
-        <button className="w-full text-left">
-          {item.title}
-        </button>
-      </li>
-    );
-  });
-  
+const DrawerButton = ({ label, showArrow }) => (
+  <button className="w-[90%] text-left p-2 py-3 ml-8 bg-transparent rounded-md flex items-center justify-between">
+    <span className="text-gray-700">{label}</span>
+    {showArrow && <span><i className="fi fi-rr-angle-small-right"></i></span>}
+  </button>
+);
+
+const LeftSidebar = ({ open, toggleDrawer }) => {
+  const username = useSelector((state) => state?.auth?.currentUser?.user?.username) || "Guest";
 
   return (
-    <Drawer 
-      open={isOpen} 
-      onClose={onClose}
-      anchor="left"
-      PaperProps={{
-        sx: {
-          backgroundColor: '#fff', // Sidebar background
-          color: '#000',
-          padding : 0,
-          margin : 0
-        },
-      }}
-      BackdropProps={{
-        sx: {
-          backgroundColor: 'rgba(0, 0, 0, 0.8)', // Darker background
-        },
-      }}
-    >
-      <Box sx={{ width: 350 }} disablePadding >
-        <List disablePadding >
-          {renderSidebarItems}
-        </List>
-      </Box>
-    </Drawer>
+    <div className="relative">
+      {open && (
+        <button
+          onClick={toggleDrawer}
+          className="fixed z-[1300] top-4 left-[380px] text-white text-xl"
+          aria-label="Close sidebar"
+        >
+         <i class="fi fi-rr-cross"></i>
+        </button>
+      )}
+      <Drawer
+        anchor="left"
+        open={open}
+        onClose={toggleDrawer}
+        PaperProps={{
+          sx: {
+            width: "370px",
+            padding: 0,
+            margin: 0,
+            boxSizing: "border-box",
+          },
+        }}
+        BackdropProps={{
+          sx: {
+            backgroundColor: "rgba(0, 0, 0, 0.76)",
+          },
+        }}
+      >
+        <div className="flex items-center gap-x-2 p-1 border border-black bg-primary-light text-white font-robotogap-2">
+          <i className="fi fi-br-circle-user text-2xl ml-7"></i>
+          <span className="font-bold pb-1 text-xl">
+            Hello, {capitalize(username)}
+          </span>
+        </div>
+        <div>
+          {sidebarItems.map((section, index) => (
+            <div key={index} className="py-2 border-b border-gray-200">
+              <h4 className="text-lg ml-9 font-bold mb-2">{section.title}</h4>
+              {section.buttons.map((button, i) => (
+                <div key={i} className="text-sm font-medium hover:bg-gray-200">
+                  <DrawerButton
+                    label={button.label}
+                    showArrow={button.showArrow}
+                  />
+                </div>
+              ))}
+            </div>
+          ))}
+        </div>
+      </Drawer>
+    </div>
   );
 };
 

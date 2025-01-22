@@ -9,7 +9,7 @@ import { WhiteButton } from "../Button/Button";
 const ProductCard = ({ product}) => {
   const dispatch = useDispatch();
   const isProductInCart = useSelector(state => state.cart.items.find(item => item.id === product.id));
-
+  const user = useSelector(state => state?.auth?.currentUser?.user)
   const handleAddToCart = (product) => {
     dispatch(addToCart({product}));
   }
@@ -48,7 +48,7 @@ const ProductCard = ({ product}) => {
         </div>
 
         {/* Add to Cart Button */}
-        {
+        { user && (
             isProductInCart ? (
                 <Link to="/cart" className="block w-full mt-4">
                     <WhiteButton title = 'Go to Cart' />
@@ -58,7 +58,7 @@ const ProductCard = ({ product}) => {
                     <AddToCartButton />
                 </div>
             )
-        }
+        )}
 
       </div>
     </div>
