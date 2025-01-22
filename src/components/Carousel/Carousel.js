@@ -95,7 +95,7 @@ const CustomCarousel = () => {
     <div className="relative overflow-hidden w-full h-full">
       {/* Main Slider Container */}
       <div
-        className="flex"
+        className="flex shadow-2xl"
         style={{
           transform: `translateX(-${currentIndex * 100}vw)`,
           transition: isTransitioning ? "transform 500ms ease-in-out" : "none",
@@ -114,6 +114,7 @@ const CustomCarousel = () => {
           </div>
         ))}
       </div>
+      <div  className="w-full h-screen absolute top-0 bg-gradient-to-t from-black to-transparent" />
 
       {/* Navigation Dots */}
       <div className="flex justify-center gap-2 mt-8">
@@ -129,18 +130,20 @@ const CustomCarousel = () => {
       </div>
 
       {/* Navigation Arrows - Now using flex to position them */}
-      <div className="absolute inset-0 flex items-center justify-between pointer-events-none">
+      <div className="z-20 absolute top-0 inset-0 flex items-start justify-between pointer-events-none">
         <button
           onClick={handlePrev}
-          className="pointer-events-auto ml-4 bg-opacity-50 text-black p-2"
+          className="pointer-events-auto ml-4 mt-20 bg-opacity-50 text-black p-2"
         >
           <i className="fi fi-rs-angle-left text-4xl bg-transparent"></i>
+          <i className="fi fi-rs-angle-left -ml-8 text-4xl bg-transparent text-white opacity-50"></i>
         </button>
         <button
           onClick={handleNext}
-          className="pointer-events-auto mr-4 bg-opacity-50 text-black p-2"
+          className="pointer-events-auto mr-4 mt-20 bg-opacity-50 text-black p-2"
         >
-          <i className="fi fi-rs-angle-right text-4xl bg-transparent"></i>
+          <i className="fi fi-rs-angle-right text-4xl bg-transparent text-white opacity-50"></i>
+          <i className="fi fi-rs-angle-right text-4xl bg-transparent -ml-8 "></i>
         </button>
       </div>
     </div>

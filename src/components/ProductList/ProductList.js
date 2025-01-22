@@ -8,7 +8,7 @@ const ProductList = () => {
     behavior: "instant"
   });
   return (
-    <div className="p-4 min-h-screen relative -top-56  mx-auto w-full z-10 ">
+    <div className="p-4 min-h-screen relative -top-72  mx-auto w-full z-10 ">
       <div className="flex flex-wrap items-center justify-center gap-4  ">
         {products.map((product) => (
           <div className="w-[220px]">
