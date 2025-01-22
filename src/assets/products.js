@@ -1,330 +1,3 @@
-// const products = [
-//   {
-//     Brand: "VredeVogel",
-//     Description: "Women Silk Blend Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/r/q/x/3xl-vv-9211-vredevogel-original-imahyg2tczuhsayv.jpeg?q=70",
-//     Price: "9701",
-//     id: 0,
-//   },
-//   {
-//     Brand: "Mohit Womens Wear",
-//     Description: "Women Printed Georgette Anarkali Kurta",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/kurta/m/t/q/m-spc-01-gulaboo-fashion-original-imagncfyhgt95sda.jpeg?q=70",
-//     Price: "9583",
-//     id: 2,
-//   },
-//   {
-//     Brand: "Royal Export",
-//     Description: "Women Cotton Blend Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/w/2/k/s-rx42-ktd-lav-royal-export-original-imagxn3emuytwpsz.jpeg?q=70",
-//     Price: "9759",
-//     id: 3,
-//   },
-//   {
-//     Brand: "Royal Export",
-//     Description: "Women Art Silk Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/0/x/a/s-rx44-ktd-rosegold-royal-export-original-imagyh5ufsmvv2yw.jpeg?q=70",
-//     Price: "9729",
-//     id: 4,
-//   },
-//   {
-//     Brand: "berrylicious",
-//     Description: "PS4512 Floral Full Front Embroidered Kurta, Trouser/Pan...",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/salwar-kurta-dupatta/q/z/s/l-ps4512blac-berrylicious-original-imagwt9hrzurftcf.jpeg?q=70",
-//     Price: "91,559",
-//     id: 5,
-//   },
-//   {
-//     Brand: "KOTTY",
-//     Description: "Women Straight Fit Grey Lycra Blend Trousers",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/3/f/0/32-kttwomenspant511-kotty-original-imahyy5dvrgjvzgt.jpeg?q=70",
-//     Price: "9492",
-//     id: 6,
-//   },
-//   {
-//     Brand: "Just Live Fashion",
-//     Description: "Women Black, Silver Capri",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/l3vxbbk0/capri/n/f/d/free-stripe-capri-2pcs-combo-just-live-fashion-original-imagewpnkwv43qvh.jpeg?q=70",
-//     Price: "9365",
-//     id: 7,
-//   },
-//   {
-//     Brand: "Riyansh hub",
-//     Description: "Women Pure Cotton Kurti Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/d/q/n/m-sanvi-grn-m-riyansh-hub-original-imahfhhgf5aycdhv.jpeg?q=70",
-//     Price: "9615",
-//     id: 8,
-//   },
-//   {
-//     Brand: "Royal Export",
-//     Description: "Women Viscose Rayon Kurti Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/j/u/n/s-rx51-whitework-royal-export-original-imahf28f5khe8dwg.jpeg?q=70",
-//     Price: "9749",
-//     id: 9,
-//   },
-//   {
-//     Brand: "VredeVogel",
-//     Description: "Women Chanderi Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/g/x/m/l-vv-9451-vredevogel-original-imahy8w4ftjysnmw.jpeg?q=70",
-//     Price: "9709",
-//     id: 10,
-//   },
-//   {
-//     Brand: "KOTTY",
-//     Description: "Women Regular Fit Light Blue Viscose Rayon Trousers",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/1/r/7/30-kttwomenspant248-kotty-original-imaghngkwcts5ywk.jpeg?q=70",
-//     Price: "9499",
-//     id: 11,
-//   },
-//   {
-//     Brand: "Laxita",
-//     Description: "Women Viscose Rayon Kurta Pant Attached Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/1/v/0/m-nee-wine-02-nee-fashion-original-imagrmhxtnyab3fs.jpeg?q=70",
-//     Price: "9899",
-//     id: 12,
-//   },
-//   {
-//     Brand: "Royal Export",
-//     Description: "Women Cotton Blend Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/8/s/j/xl-rx42-ktd-meh-royal-export-original-imahfdz2nw3wmm7a.jpeg?q=70",
-//     Price: "9759",
-//     id: 13,
-//   },
-//   {
-//     Brand: "Riyansh hub",
-//     Description: "Women Pure Cotton Kurti Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/y/i/f/xl-sanvi-maroon-xl-signature-hub-original-imahfeqcrymqr5mb.jpeg?q=70",
-//     Price: "9615",
-//     id: 14,
-//   },
-//   {
-//     Brand: "berrylicious",
-//     Description: "Women Viscose Rayon Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/2/0/2/xs-kl3130-berrylicious-original-imagz2bafew95efx.jpeg?q=70",
-//     Price: "91,299",
-//     id: 15,
-//   },
-//   {
-//     Brand: "Shiva Fashion Hub",
-//     Description: "Women Cotton Blend Kurta Pant Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/w/w/a/l-blueless2024-vasudha-fashion-hub-original-imahf8xgkmwqgnkz.jpeg?q=70",
-//     Price: "9444",
-//     id: 16,
-//   },
-//   {
-//     Brand: "berrylicious",
-//     Description: "Women Chanderi Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/l/i/1/s-ps1015tb-berrylicious-original-imaggutbceyznzfh.jpeg?q=70",
-//     Price: "91,002",
-//     id: 17,
-//   },
-//   {
-//     Brand: "Riyansh hub",
-//     Description: "Women Pure Cotton Kurti Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/s/7/f/xl-sanvi-wine-xl-signature-hub-original-imahfeqcynzbgcah.jpeg?q=70",
-//     Price: "9615",
-//     id: 18,
-//   },
-//   {
-//     Brand: "samu",
-//     Description: "Women Chiffon Kurti Pant Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/v/t/0/m-lakhnavi-kurta-set-for-women-chikkenkari-kurti-women-s-rayon-original-imagqhnk7nefyepc.jpeg?q=70",
-//     Price: "9799",
-//     id: 19,
-//   },
-//   {
-//     Brand: "berrylicious",
-//     Description: "Embroidered Kurta, Trouser/Pant & Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/salwar-kurta-dupatta/m/r/4/l-ps4512blac-berrylicious-original-imagwt9hrvagce9a.jpeg?q=70",
-//     Price: "91,559",
-//     id: 20,
-//   },
-//   {
-//     Brand: "berrylicious",
-//     Description: "Women Cotton Blend Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/salwar-kurta-dupatta/o/v/w/xl-kl3308-berrylicious-original-imagygbavazfrkwt.jpeg?q=70",
-//     Price: "9769",
-//     id: 21,
-//   },
-//   {
-//     Brand: "TS Lifestyle",
-//     Description: "Women Georgette Kurta Sharara Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/w/o/b/40-wsr-cruse-ts-lifestyle-original-imaghuzumfejh4rw.jpeg?q=70",
-//     Price: "91,349",
-//     id: 22,
-//   },
-//   {
-//     Brand: "MOKOSH",
-//     Description: "Women Silk Blend Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/8/p/f/xxl-d-412-mokosh-original-imahyhcepygcgvf2.jpeg?q=70",
-//     Price: "9869",
-//     id: 23,
-//   },
-//   {
-//     Brand: "VredeVogel",
-//     Description: "Women Cotton Silk Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/p/r/a/xl-vv-9219-vredevogel-original-imahyg29trqj3dgh.jpeg?q=70",
-//     Price: "9899",
-//     id: 24,
-//   },
-//   {
-//     Brand: "Zero Stitch",
-//     Description: "Women Georgette Kurta Sharara Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/5/j/g/m-zs-2235-red-zero-stitch-original-imagwjz95grsgfmf.jpeg?q=70",
-//     Price: "91,339",
-//     id: 25,
-//   },
-//   {
-//     Brand: "Riyansh hub",
-//     Description: "Women Pure Cotton Kurti Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/d/q/n/m-sanvi-grn-m-riyansh-hub-original-imahfhhgf5aycdhv.jpeg?q=70",
-//     Price: "9615",
-//     id: 26,
-//   },
-//   {
-//     Brand: "VredeVogel",
-//     Description: "Women Cotton Silk Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/0/g/d/xxl-vv-9424-vredevogel-original-imahy9dcgesxnyud.jpeg?q=70",
-//     Price: "9709",
-//     id: 27,
-//   },
-//   {
-//     Brand: "VEERAA CLOTHING",
-//     Description: "Pack of 3 Women Printed Round Neck Cotton Blend Blue, G...",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/t-shirt/h/g/q/s-vrcwmcmb-veeraa-clothing-original-imafnzm5syaamyc6-bb.jpeg?q=70",
-//     Price: "9476",
-//     id: 28,
-//   },
-//   {
-//     Brand: "AAYUMI",
-//     Description: "Women Viscose Rayon Kurta Pant Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/q/n/m/xxl-aayumi-383-aayumi-original-imagnh6akkuxky2n.jpeg?q=70",
-//     Price: "9691",
-//     id: 29,
-//   },
-//   {
-//     Brand: "berrylicious",
-//     Description: "Women Viscose Rayon Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/6/t/l/xl-kl3131-berrylicious-original-imahf7uhkap87uze.jpeg?q=70",
-//     Price: "91,239",
-//     id: 30,
-//   },
-//   {
-//     Brand: "berrylicious",
-//     Description: "Women Viscose Rayon Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/2/b/h/s-kl3133-berrylicious-original-imahfpv6kwuag2t2.jpeg?q=70",
-//     Price: "91,299",
-//     id: 31,
-//   },
-//   {
-//     Brand: "Riyansh hub",
-//     Description: "Women Pure Cotton Kurti Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/y/i/f/xl-sanvi-maroon-xl-signature-hub-original-imahfeqcrymqr5mb.jpeg?q=70",
-//     Price: "9615",
-//     id: 32,
-//   },
-//   {
-//     Brand: "ANNU PARIDHAN",
-//     Description: "Women Viscose Rayon Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/i/w/v/l-anu2167-annu-paridhan-original-imagtyywa53ca3zu.jpeg?q=70",
-//     Price: "9699",
-//     id: 33,
-//   },
-//   {
-//     Brand: "Royal Export",
-//     Description: "Women Cotton Blend Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/w/2/k/s-rx42-ktd-lav-royal-export-original-imagxn3emuytwpsz.jpeg?q=70",
-//     Price: "9759",
-//     id: 34,
-//   },
-//   {
-//     Brand: "Royal Export",
-//     Description: "Women Art Silk Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/s/w/g/xl-rx44-ktd-mustard-royal-export-original-imahyrrzq7ezpfhf.jpeg?q=70",
-//     Price: "9729",
-//     id: 35,
-//   },
-//   {
-//     Brand: "Royal Export",
-//     Description: "Women Art Silk Kurta Pant Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/t/1/x/m-rx44-ktd-firozi-royal-export-original-imahyys642euvaat.jpeg?q=70",
-//     Price: "9729",
-//     id: 36,
-//   },
-//   {
-//     Brand: "MADHURAM FASHION",
-//     Description: "Women Georgette Kurta Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/kurta/f/n/2/m-kurti-set-for-womens-bandhani-aether-fashion-original-imagshkpxsxzuhdj.jpeg?q=70",
-//     Price: "9679",
-//     id: 37,
-//   },
-//   {
-//     Brand: "KOTTY",
-//     Description: "Women Straight Fit Grey Lycra Blend Trousers",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/trouser/3/f/0/32-kttwomenspant511-kotty-original-imahyy5dvrgjvzgt.jpeg?q=70",
-//     Price: "9492",
-//     id: 38,
-//   },
-//   {
-//     Brand: "Indo Era",
-//     Description: "Women Viscose Rayon Kurta Pant Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/ethnic-set/k/n/l/m-rrrrr8074-indo-era-original-imag8n3uzkazttpv-bb.jpeg?q=70",
-//     Price: "92,099",
-//     id: 39,
-//   },
-//   {
-//     Brand: "Aditi Tex Fab",
-//     Description: "Floral Print Kurta, Trouser/Pant & Dupatta Set",
-//     Image:
-//       "https://rukminim2.flixcart.com/image/612/612/xif0q/salwar-kurta-dupatta/o/u/s/l-kurta-pant-with-dupatta-aditi-tex-fab-original-imagzu786qbqgsxe.jpeg?q=70",
-//     Price: "9685",
-//     id: 40,
-//   },
-  
-  
-// ];
-
-// export default products;
-
 import product1 from "./products/product_1.png";
 import product2 from "./products/product_2.png";
 import product3 from "./products/product_3.png";
@@ -335,6 +8,26 @@ import product7 from "./products/product_7.png";
 import product8 from "./products/product_8.png";
 import product9 from "./products/product_9.png";
 import product10 from "./products/product_10.png";
+import product11 from "./products/product_11.png";
+import product12 from "./products/product_12.png";
+import product13 from "./products/product_13.png";
+import product14 from "./products/product_14.png";
+import product15 from "./products/product_15.png";
+import product16 from "./products/product_16.png";
+import product17 from "./products/product_17.png";
+import product18 from "./products/product_18.png";
+import product19 from "./products/product_19.png";
+import product20 from "./products/product_20.png";
+import product21 from "./products/product_21.png";
+import product22 from "./products/product_22.png";
+import product23 from "./products/product_23.png";
+import product24 from "./products/product_24.png";
+import product25 from "./products/product_25.png";
+import product26 from "./products/product_26.png";
+import product27 from "./products/product_27.png";
+import product28 from "./products/product_28.png";
+import product29 from "./products/product_29.png";
+import product30 from "./products/product_30.png";
 
 const products = [
   {
@@ -426,6 +119,186 @@ const products = [
       "Our Casual Graphic T-Shirt combines fun, creativity, and comfort. Featuring a bold graphic design, this shirt adds personality to your wardrobe while providing the comfort of soft cotton. The relaxed fit and versatile style make it perfect for casual days, whether you’re running errands or hanging out with friends. Pair it with your favorite jeans or shorts for a laid-back look that makes a statement.",
     oldPrice: 8499,
     newPrice: 7499,
+  },
+  {
+    id: 11,
+    image: product11,
+    title: "Stylish Leather Belt",
+    description:
+      "Elevate your outfit with our Stylish Leather Belt. Made from premium genuine leather, this belt is built to last while providing a sleek and polished look. Featuring a classic buckle and minimalist design, it's the perfect accessory for both casual and formal occasions. Available in versatile colors, this belt is a must-have addition to your wardrobe.",
+    oldPrice: 2499,
+    newPrice: 1999,
+  },
+  {
+    id: 12,
+    image: product12,
+    title: "Comfortable Running Shoes",
+    description:
+      "Our Comfortable Running Shoes are designed for performance and style. Featuring lightweight construction and cushioned soles, these shoes provide maximum support and comfort for your feet. The breathable mesh upper keeps your feet cool, making them perfect for long runs, workouts, or casual wear. Available in trendy colors to match your sporty style.",
+    oldPrice: 5999,
+    newPrice: 4999,
+  },
+  {
+    id: 13,
+    image: product13,
+    title: "Classic Aviator Sunglasses",
+    description:
+      "Add a touch of timeless style with our Classic Aviator Sunglasses. Featuring a durable metal frame and UV-protected lenses, these sunglasses combine fashion with functionality. Perfect for sunny days, they provide a sleek look and reliable protection. A must-have accessory for any wardrobe.",
+    oldPrice: 3499,
+    newPrice: 2999,
+  },
+  {
+    id: 14,
+    image: product14,
+    title: "Cozy Flannel Shirt",
+    description:
+      "Our Cozy Flannel Shirt is perfect for layering or wearing on its own. Made from soft, brushed fabric, it offers warmth and comfort during cooler months. The classic plaid design adds a touch of rustic charm, making it a versatile choice for casual outings or relaxed weekends.",
+    oldPrice: 3999,
+    newPrice: 3499,
+  },
+  {
+    id: 15,
+    image: product15,
+    title: "Elegant Leather Wallet",
+    description:
+      "Keep your essentials organized with our Elegant Leather Wallet. Made from high-quality leather, this wallet is both durable and stylish. It features multiple card slots, a coin pocket, and a spacious cash compartment, ensuring everything stays in place. Its sleek design makes it a perfect accessory for everyday use.",
+    oldPrice: 2999,
+    newPrice: 2499,
+  },
+  {
+    id: 16,
+    image: product16,
+    title: "Breathable Sports Cap",
+    description:
+      "Stay cool and stylish with our Breathable Sports Cap. Made from lightweight, moisture-wicking fabric, this cap is perfect for outdoor activities or casual wear. The adjustable strap ensures a comfortable fit, while the modern design adds a sporty edge to your look.",
+    oldPrice: 1999,
+    newPrice: 1499,
+  },
+  {
+    id: 17,
+    image: product17,
+    title: "Durable Hiking Backpack",
+    description:
+      "Explore the outdoors with our Durable Hiking Backpack. Designed with multiple compartments and a spacious interior, it offers plenty of room for all your essentials. The padded straps and back panel provide comfort, while the water-resistant material ensures your belongings stay dry. Perfect for hiking, traveling, or everyday use.",
+    oldPrice: 6999,
+    newPrice: 6499,
+  },
+  {
+    id: 18,
+    image: product18,
+    title: "Soft Woolen Scarf",
+    description:
+      "Wrap yourself in warmth with our Soft Woolen Scarf. Made from premium wool, this scarf is both cozy and stylish. The elegant design and neutral tones make it easy to pair with any outfit, providing a sophisticated touch to your winter wardrobe.",
+    oldPrice: 2499,
+    newPrice: 1999,
+  },
+  {
+    id: 19,
+    image: product19,
+    title: "Chic Ankle Boots",
+    description:
+      "Step out in style with our Chic Ankle Boots. Made from high-quality materials, these boots feature a comfortable sole and a stylish design that pairs well with any outfit. Perfect for both casual and formal occasions, they’re a versatile addition to your shoe collection.",
+    oldPrice: 8499,
+    newPrice: 7999,
+  },
+  {
+    id: 20,
+    image: product20,
+    title: "Elegant Gold Necklace",
+    description:
+      "Add a touch of glamour to your outfit with our Elegant Gold Necklace. Crafted with precision, this necklace features a timeless design that complements any style. Perfect for special occasions or everyday wear, it’s a stunning piece that will enhance your jewelry collection.",
+    oldPrice: 12999,
+    newPrice: 11999,
+  },
+  {
+    id: 21,
+    image: product21,
+    title: "Cozy Lounge Set",
+    description:
+      "Relax in style with our Cozy Lounge Set. Made from ultra-soft fabric, this set includes a comfortable top and matching bottoms, perfect for lounging at home or casual outings. The relaxed fit and trendy design make it a wardrobe staple for ultimate comfort and style.",
+    oldPrice: 5999,
+    newPrice: 5499,
+  },
+  {
+    id: 22,
+    image: product22,
+    title: "Trendy Tote Bag",
+    description:
+      "Carry your essentials in style with our Trendy Tote Bag. Made from durable fabric, this spacious bag features a modern design and sturdy handles for everyday use. Perfect for shopping, work, or casual outings, it’s a versatile accessory that combines functionality with fashion.",
+    oldPrice: 3999,
+    newPrice: 3499,
+  },
+  {
+    id: 23,
+    image: product23,
+    title: "High-Performance Smartwatch",
+    description:
+      "Stay connected with our High-Performance Smartwatch. Featuring advanced health tracking, customizable watch faces, and seamless smartphone integration, it’s the perfect companion for an active lifestyle. The sleek design and durable build make it suitable for both workouts and daily wear.",
+    oldPrice: 14999,
+    newPrice: 13999,
+  },
+  {
+    id: 24,
+    image: product24,
+    title: "Comfortable Slippers",
+    description:
+      "Pamper your feet with our Comfortable Slippers. Made from plush materials, these slippers provide exceptional comfort and warmth. The non-slip sole ensures safety, while the stylish design adds a touch of elegance to your loungewear.",
+    oldPrice: 1999,
+    newPrice: 1499,
+  },
+  {
+    id: 25,
+    image: product25,
+    title: "Vintage Leather Journal",
+    description:
+      "Capture your thoughts and ideas with our Vintage Leather Journal. Featuring premium leather covers and high-quality paper, this journal offers a luxurious writing experience. The compact size makes it perfect for on-the-go use, whether you’re jotting down notes or sketching.",
+    oldPrice: 3499,
+    newPrice: 2999,
+  },
+  {
+    id: 26,
+    image: product26,
+    title: "Modern Desk Lamp",
+    description:
+      "Brighten up your workspace with our Modern Desk Lamp. Featuring adjustable brightness levels and a sleek design, this lamp combines functionality with aesthetics. The energy-efficient LED provides ample light, making it perfect for studying, reading, or working.",
+    oldPrice: 5499,
+    newPrice: 4999,
+  },
+  {
+    id: 27,
+    image: product27,
+    title: "Stylish Sneakers",
+    description:
+      "Step into comfort and style with our Stylish Sneakers. Designed with a lightweight build and cushioned soles, these sneakers are perfect for all-day wear. The modern design and versatile colors make them a great choice for any outfit.",
+    oldPrice: 6999,
+    newPrice: 6499,
+  },
+  {
+    id: 28,
+    image: product28,
+    title: "Elegant Wristwatch",
+    description:
+      "Make a statement with our Elegant Wristwatch. Featuring a minimalist design and durable build, this watch is the perfect accessory for any occasion. The comfortable strap and precise movement ensure both style and functionality.",
+    oldPrice: 10999,
+    newPrice: 9999,
+  },
+  {
+    id: 29,
+    image: product29,
+    title: "Soft Throw Blanket",
+    description:
+      "Stay cozy with our Soft Throw Blanket. Made from premium fabric, this blanket offers warmth and comfort while adding a stylish touch to your home decor. Perfect for snuggling up on the couch or as an accent piece for your bed.",
+    oldPrice: 3999,
+    newPrice: 3499,
+  },
+  {
+    id: 30,
+    image: product30,
+    title: "Minimalist Wall Clock",
+    description:
+      "Add a touch of elegance to your home with our Minimalist Wall Clock. Featuring a sleek design and silent movement, this clock is both functional and stylish. Perfect for any room, it’s a timeless piece that complements modern decor.",
+    oldPrice: 4999,
+    newPrice: 4499,
   },
 ];
 

@@ -9,6 +9,7 @@ import Profile from "./components/Profile/Profile";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { setCurrentUser, setLoading } from "./slices/authSlice";
+import {BASE_URL} from './utils/config';
 
 function App() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function App() {
     const fetchUser = async (refreshToken) => {
       try {
         dispatch(setLoading(true));
-        const response = await axios.get("http://localhost:5001/user", {
+        const response = await axios.get(`${BASE_URL}/user`, {
           headers: {
             Authorization: `Bearer ${refreshToken}`,
           },

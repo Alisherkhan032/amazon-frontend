@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentUser, setLoading } from "../../slices/authSlice";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import {BASE_URL} from '../../utils/config';
 
 export function Auth(){
   const user = useSelector((state) => state.auth.currentUser);
@@ -25,6 +26,7 @@ const AuthPages = () => {
   });
   const [error, setError] = useState("");
   const [successMessage, setSuccessMessage] = useState("");
+  const [loading, setLoading] = useState(false);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -40,10 +42,11 @@ const AuthPages = () => {
     e.preventDefault();
     setError("");
     setSuccessMessage("");
+    setLoading(true);
 
     if (isLoginView) {
       axios
-        .post("http://localhost:5001/login", {
+        .post(`${BASE_URL}/login`, {
           username: formData.username,
           password: formData.password,
         })
@@ -70,7 +73,7 @@ const AuthPages = () => {
       }
       const { username, password } = formData;
       axios
-        .post("http://localhost:5001/register", {
+        .post(`${BASE_URL}/register`, {
           username: formData.username,
           password: formData.password,
         })
@@ -87,6 +90,8 @@ const AuthPages = () => {
             err?.response?.data?.message || "Something went wrong!";
           setError(errMessage);
         });
+
+      setLoading(false);
     }
   };
 
@@ -193,7 +198,9 @@ const AuthPages = () => {
                 type="submit"
                 className="w-full bg-[#FFD814] hover:bg-[#F7CA00] border border-[#FCD200] rounded-lg py-1 px-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 mt-2"
               >
-                {isLoginView ? "Sign-In" : "Create your Amazon account"}
+                {
+                  loading ? 'Loading...' : isLoginView ? 'Sign-In' : 'Create your Amazon account'
+                }
               </button>
             </form>
 
