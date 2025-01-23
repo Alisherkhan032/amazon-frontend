@@ -1,115 +1,185 @@
 import React, { useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Box from "@mui/material/Box";
+import { resetCart } from "../../slices/cartSlice";
 import { removeCurrentUser } from "../../slices/authSlice";
 import axios from "axios";
-import { resetCart } from "../../slices/cartSlice";
-import { capitalize } from "lodash";
 
-const AccountDropdown = () => {
-  const [isHovered, setIsHovered] = useState(false);
+const modalStyle = {
+  position: "absolute",
+  top: "100%",
+  left: "calc(50% - 20px)",
+  transform: "translate(-50%, 10px)",
+  width: 600,
+  maxWidth: "500%",
+  bgcolor: "background.paper",
+  boxShadow: 24,
+  borderRadius: 2,
+  p: 3,
+  zIndex: 1000,
+};
+
+const AccountAndList = () => {
+  const user = useSelector((state) => state.auth?.currentUser?.user);
+  const navigate = useNavigate();
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.auth.currentUser?.user);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleLogout = () => {
     dispatch(removeCurrentUser());
-    dispatch(resetCart())
+    dispatch(resetCart());
     const refreshToken = localStorage.getItem("refreshToken");
     localStorage.removeItem("token");
     localStorage.removeItem("refreshToken");
     axios
       .post("http://localhost:5001/logout", { token: refreshToken })
       .then((response) => {
-        Navigate("/login");
+        navigate("/login");
       })
       .catch((err) => console.error(err));
   };
-  return (
-    <div
-      className="relative"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
-      <div className="flex flex-col leading-3 ml-1">
-        <span className="text-white text-sm font-medium">
-        {`Hello, ${user?.username ? capitalize(user.username) : "Guest"}`}
-        </span>
-        <span className="text-white font-semibold">Account & Lists</span>
-      </div>
 
-      <div className="relative">
+  const handleOpen = () => setIsHovered(true);
+  const handleClose = () => setIsHovered(false);
+
+  const handleNavigate = () => {
+    navigate("/profile");
+  };
+
+  return (
+    <div className="relative z-50">
+      {isHovered && (
+        <div
+          className="fixed inset-0 bg-black opacity-60 z-40"
+          style={{ pointerEvents: "none" }}
+        ></div>
+      )}
+
+      <div
+        className="relative  hidden md:flex flex-col text-sm cursor-pointer border border-transparent hover:border-white z-[3000]"
+        onMouseEnter={handleOpen}
+        onMouseLeave={handleClose}
+        onClick={handleNavigate}
+      >
+        <p className="font-semibold">
+          {user ? `Hello, ${user?.username}` : "Hello, Guest"}
+        </p>
+        <p className="font-bold">Account & Lists</p>
+
         {isHovered && (
-          <div className="absolute right-0 w-[480px] bg-white border border-gray-200 text-black shadow-xl rounded-lg mt-1 transform transition-all duration-200 ease-out opacity-100 translate-y-0">
-            {(
-              <div className="p-6">
-                <div className="grid grid-cols-2 gap-8">
-                  <div>
-                    <h3 className="font-bold mb-3 text-lg text-gray-900">
-                      Your Lists
-                    </h3>
-                    <div className="space-y-3">
-                      {[
-                        "Create a Wish List",
-                        "Wish from Any Website",
-                        "Baby Wishlist",
-                        "Discover Your Style",
-                      ].map((item) => (
-                        <Link
-                          key={item}
-                          className="block text-gray-600 hover:text-orange-600 hover:underline transition-colors duration-200"
-                        >
-                          {item}
-                        </Link>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <Link to="/profile">
-                      <h3 className="font-bold mb-3 text-lg text-gray-900">
-                        Your Account
-                      </h3>
+          <Box
+            sx={modalStyle}
+            className="absolute -mt-2 bg-white shadow-lg border rounded-lg"
+          >
+            <h3 className="text-lg font-bold mb-4 text-gray-900">
+              Who is shopping? Select a profile.
+            </h3>
+            <p className="text-blue-600 hover:underline font-medium mb-4">
+              <Link to="/profile">Manage Profiles</Link>
+            </p>
+
+            <div className="flex space-x-6 border-t pt-4">
+              <div className="w-1/2">
+                <h4 className="text-md font-bold mb-2 text-gray-900">
+                  Your Lists
+                </h4>
+                <ul className="space-y-1 text-sm text-gray-700">
+                  <li>
+                    <Link className="hover:underline">Shopping List</Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Create a Wish List</Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">
+                      Wish from Any Website
                     </Link>
-                    <div className="space-y-3">
-                      {[
-                        "Your Orders",
-                        "Your Wish List",
-                        "Your Recommendations",
-                        "Your Prime Membership",
-                      ].map((item) => (
-                        <Link
-                          key={item}
-                          className="block text-gray-600 hover:text-orange-600 hover:underline transition-colors duration-200"
-                        >
-                          {item}
-                        </Link>
-                      ))}
-                      {user ? (
-                        <button
-                          onClick={() => handleLogout()}
-                          className="text-red-600 hover:text-red-700 hover:underline transition-colors duration-200"
-                        >
-                          Sign Out
-                        </button>
-                      ) : (
-                        <Link to="/login">
-                          <button
-                            onClick={() => handleLogout()}
-                            className="text-red-600 hover:text-red-700 hover:underline transition-colors duration-200"
-                          >
-                            Sign In
-                          </button>
-                        </Link>
-                      )}
-                    </div>
-                  </div>
-                </div>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Baby Wishlist</Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Discover Your Style</Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Explore Showroom</Link>
+                  </li>
+                </ul>
               </div>
-            )}
-          </div>
+
+              <div className="w-1/2">
+                <h4 className="text-md font-bold mb-2 text-gray-900">
+                  Your Account
+                </h4>
+                <ul className="space-y-1 text-sm text-gray-700">
+                  <li>
+                    <Link to="/profile" className="hover:underline">
+                      Your Account
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Your Orders</Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Your Wish List</Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">
+                      Your Recommendations
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">
+                      Recalls and Product Safety Alerts
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">
+                      Your Prime Membership
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Your Prime Video</Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">
+                      Memberships & Subscriptions
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Your Seller Account</Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Devices</Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">
+                      Register for a free Business Account
+                    </Link>
+                  </li>
+                  <li>
+                    <Link className="hover:underline">Switch Accounts</Link>
+                  </li>
+                  <li>
+                    {user ? (
+                      <Link onClick={handleLogout} className="hover:underline text-red-500">
+                        Sign out
+                      </Link>
+                    ) : (
+                      <Link to="/login" className="hover:underline text-blue-500">
+                        Sign in
+                      </Link>
+                    )}
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </Box>
         )}
       </div>
     </div>
   );
 };
 
-export default AccountDropdown;
+export default AccountAndList;

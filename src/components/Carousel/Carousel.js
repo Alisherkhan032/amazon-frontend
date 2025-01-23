@@ -130,7 +130,7 @@ const CustomCarousel = () => {
       </div>
 
       {/* Navigation Arrows - Now using flex to position them */}
-      <div className="z-20 absolute top-0 inset-0 flex items-start justify-between pointer-events-none">
+      <div className=" absolute top-0 inset-0 flex items-start justify-between pointer-events-none">
         <button
           onClick={handlePrev}
           className="pointer-events-auto ml-4 mt-20 bg-opacity-50 text-black p-2"
