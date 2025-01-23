@@ -228,15 +228,15 @@ const products = [
     oldPrice: 3999,
     newPrice: 3499,
   },
-  {
-    id: 23,
-    image: product23,
-    title: "High-Performance Smartwatch",
-    description:
-      "Stay connected with our High-Performance Smartwatch. Featuring advanced health tracking, customizable watch faces, and seamless smartphone integration, it’s the perfect companion for an active lifestyle. The sleek design and durable build make it suitable for both workouts and daily wear.",
-    oldPrice: 14999,
-    newPrice: 13999,
-  },
+  // {
+  //   id: 23,
+  //   image: product23,
+  //   title: "High-Performance Smartwatch",
+  //   description:
+  //     "Stay connected with our High-Performance Smartwatch. Featuring advanced health tracking, customizable watch faces, and seamless smartphone integration, it’s the perfect companion for an active lifestyle. The sleek design and durable build make it suitable for both workouts and daily wear.",
+  //   oldPrice: 14999,
+  //   newPrice: 13999,
+  // },
   {
     id: 24,
     image: product24,

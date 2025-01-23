@@ -72,12 +72,15 @@ const AccountAndList = () => {
             sx={modalStyle}
             className="absolute -mt-2 bg-white shadow-lg border rounded-lg"
           >
-            <h3 className="text-lg font-bold mb-4 text-gray-900">
-              Who is shopping? Select a profile.
-            </h3>
-            <p className="text-blue-600 hover:underline font-medium mb-4">
-              <Link to="/profile">Manage Profiles</Link>
-            </p>
+            <div className="flex justify-between bg-sky-100 px-3 pt-3 rounded-lg">
+              <div className="text-sm mb-2 text-gray-600">
+                Who is shopping? Select a profile.
+              </div>
+              <p className="text-sky-700  flex items-center mb-4">
+                <Link to="/profile" className="hover:underline">Manage Profiles {" "} </Link>
+                <i className="fi fi-ts-angle-small-right font-medium mt-1"></i>
+              </p>
+            </div>
 
             <div className="flex space-x-6 border-t pt-4">
               <div className="w-1/2">
@@ -163,11 +166,17 @@ const AccountAndList = () => {
                   </li>
                   <li>
                     {user ? (
-                      <Link onClick={handleLogout} className="hover:underline text-red-500">
+                      <Link
+                        onClick={handleLogout}
+                        className="hover:underline text-red-500"
+                      >
                         Sign out
                       </Link>
                     ) : (
-                      <Link to="/login" className="hover:underline text-blue-500">
+                      <Link
+                        to="/login"
+                        className="hover:underline text-blue-500"
+                      >
                         Sign in
                       </Link>
                     )}
