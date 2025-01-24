@@ -50,67 +50,77 @@ const Cart = () => {
         <div className="w-full h-[0.5px] bg-gray-300 mb-4"></div>
 
         {/* Render products dynamically */}
-        {cartItems.map((item) => (
-          <div
-            key={item.id}
-            className={`flex gap-x-4 border-b border-gray-300 pb-4 mb-4 ${
-              !item.selected ? "opacity-50" : ""
-            }`}
-          >
-            <div className="flex items-center gap-x-2">
-              <input
-                type="checkbox"
-                checked={item.selected}
-                onChange={() => handleToggleSelect(item.id)}
-                className="mt-2 h-4 w-4 cursor-pointer"
-              />
-              <img
-                src={item.image}
-                alt={item.title}
-                className="h-48 rounded object-cover"
-              />
-            </div>
-
-            <div className="flex flex-col flex-grow">
-              <h3 className="text-lg font-medium">{item.title}</h3>
-              <p className="text-green-600 text-xs font-medium mb-2">
-                In stock
-              </p>
-              <p className="text-gray-500 font-normal text-xs">
-                Eligible for FREE Shipping
-              </p>
-              {/* Spacer to push this section to the bottom */}
-              <div className="mt-auto flex items-center">
-                <div className="border-4 border-yellow-400 font-medium rounded-3xl py-1 flex justify-between items-center space-x-6 px-2">
-                  <button
-                    className="font-bold"
-                    onClick={() => handleQuantityChange(item.id, -1)}
-                  >
-                    {item.quantity === 1 ? (
-                      <i className="fi fi-rs-trash "></i>
-                    ) : (
-                      <i className="fi fi-rr-minus-small"></i>
-                    )}
-                  </button>
-                  <div className="pb-1">{item.quantity}</div>
-                  <button
-                    className="font-bold"
-                    onClick={() => handleQuantityChange(item.id, 1)}
-                  >
-                    <i className="fi fi-rr-plus-small"></i>
-                  </button>
-                </div>
-                <div className="ml-4"> 
-                  <CartActionButtons item={item} />
-                </div>
-              </div>
-            </div>
-
-            <p className="font-semibold text-gray-900">
-              ₹{item.newPrice * item.quantity}
-            </p>
+        {cartItems.length === 0 ? (
+          <div className="text-center py-8">
+            <h3 className="text-xl font-medium">Your Cart is Empty</h3>
+            <p className="text-gray-600">Add items to it now.</p>
           </div>
-        ))}
+        ) : (
+          cartItems.map((item) => (
+            cartItems.map((item) => (
+              <div
+                key={item.id}
+                className={`flex gap-x-4 border-b border-gray-300 pb-4 mb-4 ${
+                  !item.selected ? "opacity-50" : ""
+                }`}
+              >
+                <div className="flex items-center gap-x-2">
+                  <input
+                    type="checkbox"
+                    checked={item.selected}
+                    onChange={() => handleToggleSelect(item.id)}
+                    className="mt-2 h-4 w-4 cursor-pointer"
+                  />
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="h-48 rounded object-cover"
+                  />
+                </div>
+    
+                <div className="flex flex-col flex-grow">
+                  <h3 className="text-lg font-medium">{item.title}</h3>
+                  <p className="text-green-600 text-xs font-medium mb-2">
+                    In stock
+                  </p>
+                  <p className="text-gray-500 font-normal text-xs">
+                    Eligible for FREE Shipping
+                  </p>
+                  {/* Spacer to push this section to the bottom */}
+                  <div className="mt-auto flex items-center">
+                    <div className="border-4 border-yellow-400 font-medium rounded-3xl py-1 flex justify-between items-center space-x-6 px-2">
+                      <button
+                        className="font-bold"
+                        onClick={() => handleQuantityChange(item.id, -1)}
+                      >
+                        {item.quantity === 1 ? (
+                          <i className="fi fi-rs-trash "></i>
+                        ) : (
+                          <i className="fi fi-rr-minus-small"></i>
+                        )}
+                      </button>
+                      <div className="pb-1">{item.quantity}</div>
+                      <button
+                        className="font-bold"
+                        onClick={() => handleQuantityChange(item.id, 1)}
+                      >
+                        <i className="fi fi-rr-plus-small"></i>
+                      </button>
+                    </div>
+                    <div className="ml-4"> 
+                      <CartActionButtons item={item} />
+                    </div>
+                  </div>
+                </div>
+    
+                <p className="font-semibold text-gray-900">
+                  ₹{item.newPrice * item.quantity}
+                </p>
+              </div>
+            ))
+          ))
+        )}
+        {}
       </div>
 
       {/* Right Section: Subtotal */}
